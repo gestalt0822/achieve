@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-    
     def new
       if params[:back]
         @contact = Contact.new(contacts_params)
@@ -13,7 +12,7 @@ class ContactsController < ApplicationController
      if @contact.save
        redirect_to root_path, notice: "お問い合わせありがとうございました！！"
      else
-       render 'new'
+       render :new
      end
     end
     

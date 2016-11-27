@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
-
   before_action :authenticate_user!
-  before_action :set_blog,only: [:edit, :update, :destroy]
+  before_action :set_blog, only: [:edit, :update, :destroy]
   
   def index
     @blogs = Blog.all
@@ -20,19 +19,18 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
-      render 'new'
+      render :new
     end
   end
   
   def edit
-
   end
   
   def update
     if @blog.update(blogs_params)
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
-      render 'edit'
+      render :edit
     end
   end
   
@@ -48,7 +46,6 @@ class BlogsController < ApplicationController
   end
     
   private
-  
   def blogs_params
     params.require(:blog).permit(:title, :content)
   end
@@ -56,5 +53,4 @@ class BlogsController < ApplicationController
   def set_blog
     @blog = Blog.find(params[:id])
   end
-    
 end
