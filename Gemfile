@@ -43,3 +43,8 @@ group :development do
 end
 gem 'rails_admin'
 gem 'cancan'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'better_errors'
+end
