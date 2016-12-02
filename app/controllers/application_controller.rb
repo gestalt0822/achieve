@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入
-  PERMISSIBLE_ATTRIBUTES = %i(name)
+  PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
   end
 
-  protected
+  private
     #deviseのストロングパラメーターにカラム追加するメソッドを定義
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: PERMISSIBLE_ATTRIBUTES)

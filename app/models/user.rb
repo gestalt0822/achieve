@@ -4,7 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable
+  mount_uploader :avatar
   has_many :blogs
+
+  def update_with_password(params, *options)
+    if provider.blank?
+      super
+    else
+      paramas.delete :current_password
+      update_without_password(paramas, *options)
+    end
+  end
 
   def self.create_unique_string
     SecureRandom.uuid
