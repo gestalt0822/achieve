@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable
   has_many :blogs
 
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+
   def self.find_for_facebook_oauth(auth, sign_in_resource = nil)
     user = User.find_by(email: auth.info.email)
 
