@@ -40,6 +40,7 @@ gem 'devise'
 gem 'faker'
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end
 gem 'rails_admin'
 gem 'cancan'
@@ -48,3 +49,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
 end
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
