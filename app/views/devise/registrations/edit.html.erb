@@ -49,9 +49,13 @@
             <%= f.hidden_field :avatar_cache %>
           </div>
 
+          <p><%= image_tag @user.avatar %></p>
+
           <div class="actions">
             <%= f.submit "更新", class: "btn btn-primary btn-block" %>
-          </div>
+          </div><br />
+
+    <% end %>
 
     <h3>アカウントを削除する</h3>
 
@@ -59,6 +63,5 @@
 
     <%= link_to "Back", :back %>
 
-    <% end %>
   </div>
 </div>
