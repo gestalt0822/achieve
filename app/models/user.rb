@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     if provider.blank?
       super
     else
-      paramas.delete :current_password
-      update_without_password(paramas, *options)
+      params.delete :current_password
+      update_without_password(params, *options)
     end
   end
 
