@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_blog, only: [:edit, :update, :destroy]
+  before_action :set_blog, only: [:edit, :update, :destroy, :show]
 
   def index
     @blogs = Blog.all
@@ -38,7 +38,9 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to blogs_path, notice: "ブログを削除しました！"
+    @blogs = Blog.all
+    render :index
+    #redirect_to blogs_path, notice: "ブログを削除しました！"
   end
 
 
@@ -46,6 +48,12 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blogs_params)
     render :new if @blog.invalid?
   end
+
+  def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
+  end
+
 
   private
   def blogs_params
