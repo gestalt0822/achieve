@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'relationship/create'
+
+  get 'relationship/destroy'
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:index]
+  resources :relationships, only: [:create, :destroy]
   root 'top#index'
 
   if Rails.env.development?

@@ -12,6 +12,18 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  def follow!(other_user)
+    relationship.create!(followed_id: other_user.id)
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationship.find_by(followed_id: other_user.id).destroy 
+  end
+
   def update_with_password(params, *options)
     if provider.blank?
       super
