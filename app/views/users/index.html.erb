@@ -11,6 +11,7 @@
       <%= user.name %>さん<br />
       <%= user.email %><br />
       <%= render 'follow_form', user: user %>
+      <%= link_to "詳細", user_path(user.id), medhod: :show, class: 'btn btn-default btn-sm btn btn-default' %>
     </div>
   <% end %>
 </div>

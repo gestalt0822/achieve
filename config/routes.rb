@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   root 'top#index'
 
