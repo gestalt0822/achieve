@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h2>タスクの詳細</h2>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-bordered design-table">
+      <tr>
+        <td class="warning"><strong>投稿者</strong></td>
+        <td><%= @task.user.name %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>タスク名</strong></td>
+        <td><%= @task.title %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>内容</strong></td>
+        <td><%= @task.content %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>締め切り</strong></td>
+        <td><%= @task.deadline.strftime("%Y年%m年%d日 %H時%M分(%a)") %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>担当者</strong></td>
+        <td><%= @task.charge.name %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>状況</strong></td>
+        <td><%= @task.status  %></td>
+      </tr>
+    </table>
+
+    <%= link_to '編集', edit_task_path(@task) %> |
+    <%= link_to '戻る', tasks_path %>
+
+  </div>
+</div>
