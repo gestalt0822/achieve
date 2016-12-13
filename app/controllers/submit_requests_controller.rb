@@ -1,6 +1,6 @@
 class SubmitRequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_submit_request, only: [:show, :edit, :update, :destroy, :destroy, :approve]
+  before_action :set_submit_request, only: [:show, :edit, :update, :destroy, :reject, :approve]
 
   # GET /submit_requests
   # GET /submit_requests.json
@@ -67,7 +67,7 @@ class SubmitRequestsController < ApplicationController
   end
 
   def approve
-    if @submit_request.update(submit_request_params)
+    if @submit_request.update(status: 2)
       @submit_request.task.update(charge_id: current_user.id)
       redirect_to inbox_submit_requests_path, notice: '依頼を承認しました。'
     else
@@ -76,10 +76,10 @@ class SubmitRequestsController < ApplicationController
   end
 
   def reject
-    if @submit_request.update(submit_request_params)
+    if @submit_request.update(status: 9)
       redirect_to inbox_submit_requests_path, notice: '依頼を却下しました。'
     else
-      redirect_to inbox_submit_requests_path, notice: '不具合が発生しました、もう一度そうさを行ってください。'
+      redirect_to inbox_submit_requests_path, notice: '不具合が発生しました、もう一度操作を行ってください。'
     end
   end
 

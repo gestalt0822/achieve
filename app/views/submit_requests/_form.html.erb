@@ -14,21 +14,24 @@
   <% f.hidden_field :user_id %>
 
   <div class="field form-group">
-    <%= f.label :task_id %><br>
+    <%= f.label :タスク名 %><br>
     <%= f.collection_select :task_id, Task.where(charge_id: current_user.id), :id, :title %>
   </div>
   <div class="field form-group">
-    <%= f.label :message %><br>
+    <%= f.label :メッセージ %><br>
     <%= f.text_area :message, class: 'form-control'  %>
   </div>
   <div class="field form-group">
-    <%= f.label :request_user_id %><br>
+    <%= f.label :実施者 %><br>
     <%= f.collection_select :request_user_id, User.where.not(id: current_user.id), :id, :name %>
   </div>
+
+  <!--
   <div class="field form-group">
     <%= f.label :状況 %><br>
-    <%= f.select :status, Task.statuses.keys %>
-  </div>
+    <%= f.number_field :status %>
+  </div>-->
+
   <div class="actions">
     <%= f.submit class: 'btn btn-info btn-block' %>
   </div>
