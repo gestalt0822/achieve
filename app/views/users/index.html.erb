@@ -1,16 +1,18 @@
 <div class="container">
-  <h2>ユーザー</h2>
+  <h2>ユーザー一覧</h2>
   <% @users.each do |user| %>
-    <div class="container-child col-md-2 col-sm-4 col-xs-6">
-      <% if user.provider == "twitter" || user.provider == "facebook" %>
-        <%= image_tag user.image_url, size: '50x50' %><br />
-      <% else %>
-        <%= image_tag user.avatar, size: '50x50' %><br />
-      <% end %>
-      <%= user.name %>さん<br />
-      <%= user.email %><br />
-      <%= render 'follow_form', user: user %>
-      <%= link_to "詳細", user_path(user.id), medhod: :show, class: 'btn btn-default btn-sm btn btn-default' %>
-    </div>
+    <% unless current_user.id == user.id %>
+      <div class="container-child col-md-3 col-sm-4 col-xs-6 each_user">
+        <% if user.provider == "twitter" || user.provider == "facebook" %>
+          <p><%= image_tag user.image_url, size: '50x50' %></p>
+        <% else %>
+          <p><%= image_tag user.avatar, size: '50x50' %></p>
+        <% end %>
+        <p><%= user.name %>さん</p>
+        <p class="email"><%= user.email %></p>
+        <p class="user"><%= render 'follow_form', user: user %></p>
+        <p class="user"><%= link_to "詳細", user_path(user.id), medhod: :show, class: 'btn btn-default btn-sm btn-default' %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :submit_requests do
+    get 'inbox', on: :collection
+      member do
+        patch 'approve'
+        patch 'reject'
+      end
+  end
+
   resources :tasks
   devise_for :users, controllers: {
     registrations: "users/registrations",

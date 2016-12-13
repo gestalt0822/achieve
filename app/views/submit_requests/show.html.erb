@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+
+    <h2>依頼したタスクの詳細</h2>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table table-bordered design-table">
+      <tr>
+        <td class="warning"><strong>User:</strong></td>
+        <td><%= @submit_request.user.name %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>Task:</strong></td>
+        <td><%= @submit_request.task.title %></td>
+      </tr>
+      <tr>
+        <td class="warning"><strong>Message:</strong></td>
+        <td><%= @submit_request.message %></td>
+     </tr>
+     <tr>
+       <td class="warning"><strong>Request user:</strong></td>
+       <td><%= @submit_request.request_user_id %></td>
+     </tr>
+     <tr>
+       <td class="warning"><strong>Status:</strong></td>
+       <td><%= @submit_request.status %></td>
+     </tr>
+  </table>
+
+    <%= link_to 'Edit', edit_submit_request_path(@submit_request) %> |
+    <%= link_to 'Back', submit_requests_path %>
+
+  </div>
+</div>
