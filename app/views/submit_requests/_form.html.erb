@@ -25,11 +25,6 @@
     <%= f.label :request_user_id %><br>
     <%= f.collection_select :request_user_id, User.where.not(id: current_user.id), :id, :name %>
   </div>
-  <!--
-  <div class="field form-group">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
-  </div>-->
   <div class="field form-group">
     <%= f.label :状況 %><br>
     <%= f.select :status, Task.statuses.keys %>
