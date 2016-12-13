@@ -4,6 +4,7 @@ class SubmitRequest < ActiveRecord::Base
   belongs_to :request_user, class_name: 'User', foreign_key: 'request_user_id'
   validates :user_id, :task_id, :request_user_id, presence: true
   validate :no_repeated_request, on: :create
+  enum status: {未着手:0, 対応中:1, 完了:2}
 
   private
   def no_repeated_request

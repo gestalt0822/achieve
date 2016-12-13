@@ -20,7 +20,7 @@
               <td><%= submit_request.user.name %></td>
               <td><%= submit_request.task.title %></td>
               <td><%= submit_request.message %></td>
-              <td><%= submit_request.request_user_id %></td>
+              <td><%= submit_request.request_user.name %></td>
               <td><%= submit_request.status %></td>
               <td><%= link_to '詳細', submit_request, class: 'btn btn-default btn-sm btn-primary' %></td>
               <td><%= link_to '修正', edit_submit_request_path(submit_request) , class: 'btn btn-default btn-sm btn-success' %></td>
