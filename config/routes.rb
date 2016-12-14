@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :conversations do
+    resources :messages
+  end
+
   resources :submit_requests do
     get 'inbox', on: :collection
       member do
