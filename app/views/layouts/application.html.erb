@@ -17,6 +17,9 @@
         channel.bind('comment_created', function(data) {
           alert(data.message);
         });
+        channel.bind('notification_created', function(data){
+          $('#unread_count').html(data.unread_counts);
+        });
       </script>
     <% end %>
 </head>
@@ -59,6 +62,8 @@
             <li><%= link_to "サインアップ", new_user_registration_path %></li>
         <% end %>
       </ul>
+      <%= link_to notifications_index_path do %>
+      　　<i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span><% end %>
     </div><!--/.navbar-collapse-->
   </div><!--/.container-fluid-->
 </nav>
