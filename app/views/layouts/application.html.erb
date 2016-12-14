@@ -4,13 +4,25 @@
   <title>Achieve</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
   <%= csrf_meta_tags %>
   <meta name="viewpoint" content="width=device-width, initial-scale=1">
+  <% if user_signed_in? %>
+      <script>
+        var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+          encrypted: true
+        });
+
+        var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+        channel.bind('comment_created', function(data) {
+          alert(data.message);
+        });
+      </script>
+    <% end %>
 </head>
 <body>
 
-  <header>
-
+<header>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!--brand and toggle get grouped for better mobile display -->
@@ -50,8 +62,7 @@
     </div><!--/.navbar-collapse-->
   </div><!--/.container-fluid-->
 </nav>
-
-  </header>
+</header>
 
 <%= yield %>
 
