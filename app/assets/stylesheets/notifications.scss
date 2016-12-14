@@ -1,3 +1,30 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#notification li{
+  list-style-type: none;
+}
+
+
+#notification .readornot{
+  color: #fff;
+  background-color: #f00;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+#notification p{
+  margin:10px 0px;
+}
+
+#notification ul{
+  background-color: #fc9;
+  border: 1px solid #f96;
+  padding: 5px 10px 20px 10px;
+}
+
+#notification hr{
+  border: 1px dotted #f96;
+  margin: 20px;
+}
