@@ -11,12 +11,11 @@
         <p><%= user.name %>さん</p>
         <p class="email"><%= user.email %></p>
         <p class="user"><%= render 'follow_form', user: user %></p>
-        <p class="user"><%= link_to "詳細", user_path(user.id), medhod: :show, class: 'btn btn-default btn-sm btn-default' %></p>
-
-        <div class="item">
-          <%= link_to user.name, user %>
-          <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
-        </div>
+        <p class="user">
+          <%= link_to "詳細", user_path(user.id), medhod: :show, class: 'btn btn-default btn-xs btn-success' %>
+          <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: 'btn btn-default btn-xs btn-warning' %>
+        </p>
+        <!--<div class="item"><%= link_to user.name, user %></div>-->
       </div>
     <% end %>
   <% end %>

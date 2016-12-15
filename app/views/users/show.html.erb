@@ -9,9 +9,16 @@
     <%= image_tag @user.avatar, size: '200x200' %><br />
   <% end %>
 
-<%= render partial: 'follower', locals: { followers: @followers} %>
-<%= render partial: 'followed_user', locals: { followed_users: @followed_users} %>
+  <p>
+    <%= render partial: 'follower', locals: { followers: @followers} %>
+  </p>
 
-<%= link_to "戻る", users_path %>
+  <p>
+    <%= render partial: 'followed_user', locals: { followed_users: @followed_users} %>
+  </p>
+
+  <p>
+    <%= link_to "戻る", users_path %>
+  </p>
 
 </div>

@@ -57,7 +57,7 @@
            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
            <li>
            <%= link_to notifications_index_path do %>
-           <span id="unread_count" style="1px solid #fff"><i class="fa fa-bell fa-1x"><%= @notifications_count %></i></span>
+           <span id="unread_count"<i class="fa fa-bell fa-1x notice"><%= @notifications_count %></i></span>
            <% end %>
            </li>
          <% else %>
@@ -73,8 +73,8 @@
 <%= yield %>
 
 <footer>
-　　<p>運営会社DIVE INTO CODE株式会社</p>
-　　<p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+  <p>運営会社DIVE INTO CODE株式会社</p>
+  <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
 </footer>
 
 </body>

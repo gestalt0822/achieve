@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1"
+  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
     <p><%= notice %></p>
 
-    <h1>お問い合わせ</h1>
+    <h2>お問い合わせ</h2>
 
     <%= form_for(@contact, url:confirm_contacts_path) do |f| %>
 
@@ -13,7 +13,7 @@
       <%= f.text_field :email, class: 'form-control'  %><br>
       <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control'  %><br>
-      <%= f.submit 'send', class: 'btn btn-info btn-block' %>
+      <%= f.submit '送信', class: 'btn btn-info btn-block' %>
     <% end %><br>
 
     <%= link_to "トップに戻る", blogs_path %>
