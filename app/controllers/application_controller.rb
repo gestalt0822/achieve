@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #通知機能
-  before_action :current_notifications
+  before_action :current_notifications, if: :signed_in?
 
-  def current_notifications if: :signed_in?
+  def current_notifications
     @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
   end
 
