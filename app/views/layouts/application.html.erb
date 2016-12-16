@@ -8,20 +8,20 @@
   <%= csrf_meta_tags %>
   <meta name="viewpoint" content="width=device-width, initial-scale=1">
   <% if user_signed_in? %>
-      <script>
-        var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
-          encrypted: true
-        });
+    <script>
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+        encrypted: true
+      });
 
-        var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
-        channel.bind('comment_created', function(data) {
-          alert(data.message);
-        });
-        channel.bind('notification_created', function(data){
-          $('#unread_count').html(data.unread_counts);
-        });
-      </script>
-    <% end %>
+      var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+      channel.bind('notification_created', function(data) {
+        $('#unread_count').html(data.unread_counts);
+      });
+    </script>
+  <% end %>
 </head>
 <body>
 
@@ -50,15 +50,15 @@
            <li><%= link_to 'タスク（未決）', inbox_submit_requests_path if user_signed_in? %></li>
            <li><%= link_to 'メッセージ', conversations_path %></li>
            <li><%= link_to 'お知らせ', notifications_index_path %></li>
+           <li><%= link_to 'トップページ', root_path %></li>
          </ul>
          </li>
          <% if user_signed_in? %>
            <li><%= link_to 'マイページ', edit_user_registration_path %></li>
            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-           <li>
-           <%= link_to notifications_index_path do %>
-           <span id="unread_count"<i class="fa fa-bell fa-1x notice"><%= @notifications_count %></i></span>
-           <% end %>
+           <li><%= link_to  notifications_index_path, class: "navbar-brand" do %>
+             <i class="fa fa-bell fa-1x notification"><span id="unread_count"><%= @notifications_count %></span></i>
+            <% end %>
            </li>
          <% else %>
             <li><%= link_to "ログイン", new_user_session_path %></li>

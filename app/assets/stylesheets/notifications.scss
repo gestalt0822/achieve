@@ -28,3 +28,18 @@
   border: 1px dotted #f96;
   margin: 20px;
 }
+
+.notification{
+  color: yellow;
+}
+
+#unread_count{
+  color: white;
+  font-size: 15px;
+  display: block;
+  width:18px;
+  height:18px;
+  background-color: red;
+  border-radius: 10px;
+  float: right;
+}
