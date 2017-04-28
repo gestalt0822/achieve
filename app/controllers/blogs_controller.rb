@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
   end
 
   def new
+    @button = "確認画面へ"
     if params[:back]
       @blog = Blog.new(blogs_params)
     else
@@ -26,6 +27,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @button = "更新する"
   end
 
   def update
